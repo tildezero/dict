@@ -1,0 +1,23 @@
+{
+  "name": "dict",
+  "version": "1.0.0",
+  "description": "a dictionary thing with petite-vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tildezero/dict.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tildezero/dict/issues"
+  },
+  "homepage": "https://github.com/tildezero/dict#readme",
+  "dependencies": {
+    "node-fetch": "^3.1.0"
+  }
+}
