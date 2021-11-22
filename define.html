@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module">
         import { createApp } from 'https://unpkg.com/petite-vue?module'
-        const BASE_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
+        const BASE_URL = '/.netlify/functions/dict?word='
 
         const url = new URL(window.location.href)
         const u = new URLSearchParams(url.search)
