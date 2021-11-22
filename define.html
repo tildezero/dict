@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
+    <title>dictionary</title>
+</head>
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/petite-vue?module'
+        const BASE_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
+
+        const url = new URL(window.location.href)
+        const u = new URLSearchParams(url.search)
+        if (!u.has("word")) {
+            window.location.href = `/err.html`
+        } 
+        const w = u.get("word")
+        document.title = `definition for ${w}`
+        let d;
+        d = fetch(`${BASE_URL}${encodeURIComponent(w)}`)
+            .then((r) => { if (r.status == 404) window.location.href = `/err.html` })
+
+
+        createApp({
+            word: {},
+            getData() {
+                axios
+                    .get(`${BASE_URL}${w}`)
+                    .then(resp => this.word = resp.data[0])
+
+                    
+            } 
+        }).mount()
+
+        
+        
+    </script>
+    <div v-scope v-effect="getData()" v-cloak>
+        <h1>definitions for {{ word.word }}</h1> 
+        <ul><li>origin: {{ word.origin }}</ul>
+        <div v-for="meaning in word.meanings">
+            <h3>{{meaning.partOfSpeech}}</h3>
+            <div v-for="def in meaning.definitions">
+                meaning: {{ def.definition }}
+                <p v-if="def.example != null"> example: {{ def.example }} </p>
+                <details v-show="def.synonyms.length >= 1">
+                    <summary>synonyms</summary>
+                    <ul>
+                        <li v-for="syn in def.synonyms">
+                            {{ syn }}
+                        </li>
+                    </ul>    
+                </details>  
+                <details v-show="def.antonyms.length >= 1">
+                    <summary>antonyms</summary>
+                    <ul>
+                        <li v-for="ant in def.antonyms">
+                            {{ ant }}
+                        </li>
+                    </ul>    
+                </details>  
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
