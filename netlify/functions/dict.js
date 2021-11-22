@@ -1,8 +1,8 @@
-const fetch = require("node-fetch");
+import fetch from 'node-fetch'
 
-const BASE_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
 
 exports.handler = async (event, context) => {
+    const BASE_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
     const q = event.queryStringParameters.word;
     const response = await fetch(`${BASE_URL}${q}`);
     const data = await response.json();
