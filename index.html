@@ -9,15 +9,12 @@
 </head>
 <body>
    <script>
-     function fmsub() {
-        let w = document.getElementById("wordin")
-        let d = w.value;
-        window.location.href = `/define.html?word=${d}`
-     }       
-     
+     document.getElementById("form").onsubmit = (evt) => window.location.href = `define.html?word=${document.getElementById("in").value}`
    </script> 
    <h1>dictionary</h1>
-   <input placeholder="word" id="wordin">
-   <button onclick="fmsub()" id="go">go</button> 
+   <form id="form">
+       <input placeholder="word" required id="in">
+       <button type="submit">go</button>
+   </form>
 </body>
 </html>
