@@ -9,9 +9,10 @@
 </head>
 <body>
    <script>
-     document.getElementById("form").onsubmit = (evt) => {
-         evt.preventDefault(); 
-         window.location.href = `define.html?word=${document.getElementById("in").value}`
+     let f = document.getElementById("form")
+     f.onsubmit = (evt) => {
+         let w = document.getElementById("in").value
+         window.location.href = `/define.html?word=${w}`
      }
    </script> 
    <h1>dictionary</h1>
