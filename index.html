@@ -8,17 +8,19 @@
     <title>dictionary</title>
 </head>
 <body>
-   <script>
-     let f = document.getElementById("form")
-     f.onsubmit = (evt) => {
-         let w = document.getElementById("in").value
-         window.location.href = `/define.html?word=${w}`
-     }
-   </script> 
+   
    <h1>dictionary</h1>
    <form id="form">
        <input placeholder="word" required id="in">
        <button type="submit">go</button>
    </form>
+    <script>
+     let f = document.getElementById("form")
+     f.onsubmit = (evt) => {
+         event.preventDefault()
+         let w = document.getElementById("in").value
+         window.location.href = `/define.html?word=${w}`
+     }
+   </script> 
 </body>
 </html>
