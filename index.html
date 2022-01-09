@@ -16,7 +16,7 @@
    </form>
     <a href="https://github.com/tildezero/dict">code</a>
     <script>
-     document.getElementById("form").onsubmit = (evt) => {
+     document.getElementById("form").onsubmit = (event) => {
          event.preventDefault()
          window.location.href = `/define.html?word=${document.getElementById("in").value}`
      }
